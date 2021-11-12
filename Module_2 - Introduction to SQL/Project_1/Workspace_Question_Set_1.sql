@@ -10,7 +10,7 @@
 --  Category, Film_Category, Inventory, Rental and --- Film
 select f.title as film_title,
 	   c.name as category_name,
-       count(r.rental_date) as rental_count
+       count(*) as rental_count
 	   
 from category c
 join film_category fc
@@ -57,7 +57,7 @@ with q2_tab as (select f.title,
                 )
 select name as category_name,
        standard_quartile,
-       count(name)
+       count(*)
 from q2_tab
 group by name, standard_quartile
 order by category_name, standard_quartile

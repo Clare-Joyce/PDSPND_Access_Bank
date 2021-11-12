@@ -8,7 +8,7 @@
 select store.store_id,
 	   date_part('month',r.rental_date) as rental_month,
        date_part('year',r.rental_date) as rental_year,
-       count(store) as rental_count
+       count(*) as rental_count
 from store
 join staff
 on store.store_id=staff.store_id
@@ -35,7 +35,7 @@ with table_1 as (select concat(cus.first_name, ' ', cus.last_name) as name
 select date_trunc('month', p.payment_date) as pay_month,
 	   concat(cus.first_name, ' ', cus.last_name) as full_name,
        sum(p.amount) as pay_amount,
-       count(p.payment_id) as pay_count_per_month
+       count(*) as pay_count_per_month
 from customer cus
 join payment p
 on cus.customer_id=p.customer_id
@@ -63,7 +63,7 @@ with table_1 as (select concat(cus.first_name, ' ', cus.last_name) as name
      table_2 as (select date_trunc('month', p.payment_date) as pay_month,
                         concat(cus.first_name, ' ', cus.last_name) as full_name,
                         sum(p.amount) as pay_amount,
-                        count(p.payment_id) as pay_count_per_month
+                        count(*) as pay_count_per_month
                  from customer cus
                  join payment p
                  on cus.customer_id=p.customer_id
@@ -97,7 +97,7 @@ with table_1 as (select concat(cus.first_name, ' ', cus.last_name) as name
      table_2 as (select date_trunc('month', p.payment_date) as pay_month,
                         concat(cus.first_name, ' ', cus.last_name) as full_name,
                         sum(p.amount) as pay_amount,
-                        count(p.payment_id) as pay_count_per_month
+                        count(*) as pay_count_per_month
                  from customer cus
                  join payment p
                  on cus.customer_id=p.customer_id
