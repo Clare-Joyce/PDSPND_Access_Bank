@@ -16,11 +16,11 @@ from category c
 join film_category fc
 on c.category_id=fc.category_id
 join inventory i
-on fc.film_id=i.film_id
+on i.film_id=fc.film_id
 join film f
 on f.film_id=fc.film_id
 join rental r
-on r.inventory_id=i.inventory_id
+on i.inventory_id=r.inventory_id
 where c.name in ('Animation', 'Children', 'Classics', 'Comedy', 'Family','Music')
 group by f.title,c.name
 order by category_name, film_title
@@ -38,7 +38,7 @@ from category c
 join film_category fc
 on c.category_id=fc.category_id
 join film f
-on fc.film_id=f.film_id
+on f.film_id=fc.film_id
 where c.name in ('Animation', 'Children', 'Classics', 'Comedy', 'Family','Music')
 
 
@@ -52,7 +52,7 @@ with q2_tab as (select f.title,
                 join film_category fc
                 on c.category_id=fc.category_id
                 join film f
-                on fc.film_id=f.film_id
+                on f.film_id=fc.film_id
                 where c.name in ('Animation', 'Children', 'Classics', 'Comedy', 'Family','Music')
                 )
 select name as category_name,
